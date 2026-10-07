@@ -7,8 +7,8 @@ const AIExtractor = (() => {
     const PROVIDERS = {
         groq: {
             url: 'https://api.groq.com/openai/v1/chat/completions',
-            model: 'llama-3.3-70b-versatile',
-            name: 'Groq (Llama 3.3 70B)',
+            model: 'openai/gpt-oss-120b',
+            name: 'Groq (GPT-OSS 120B)',
         },
         openrouter: {
             url: 'https://openrouter.ai/api/v1/chat/completions',
@@ -76,7 +76,8 @@ Required JSON structure:
                 { role: 'user', content: USER_PROMPT_PREFIX + truncatedText }
             ],
             temperature: 0.1,
-            max_tokens: 4096,
+            max_tokens: 8192,
+            ...(provider === 'groq' ? { reasoning_effort: 'low' } : {}),
             response_format: provider === 'groq' ? { type: 'json_object' } : undefined,
         };
 

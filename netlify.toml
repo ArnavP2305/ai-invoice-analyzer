@@ -1,0 +1,10 @@
+# Netlify serves the static frontend; /api calls are proxied to the Render backend.
+# Replace YOUR-RENDER-APP with your real Render service name (e.g. invoice-analyzer).
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://invoice-analyzer-1kmo.onrender.com/api/:splat"
+  status = 200
+  force = true

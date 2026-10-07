@@ -373,7 +373,7 @@
             result = FieldExtractor.extract(rawText);
             logProcessing('✅ Regex extraction complete');
         } else if (mode === 'ai') {
-            const providerName = provider === 'groq' ? 'Groq (Llama 3.3)' : 'OpenRouter';
+            const providerName = provider === 'groq' ? 'Groq (GPT-OSS 120B)' : 'OpenRouter';
             logProcessing(`🤖 Sending to ${providerName} for extraction...`);
             setProgress(88, 'AI extraction in progress...');
             try {
@@ -387,7 +387,7 @@
         } else if (mode === 'hybrid') {
             const regexResult = FieldExtractor.extract(rawText);
             logProcessing('✅ Regex extraction complete');
-            const providerName = provider === 'groq' ? 'Groq (Llama 3.3)' : 'OpenRouter';
+            const providerName = provider === 'groq' ? 'Groq (GPT-OSS 120B)' : 'OpenRouter';
             logProcessing(`🤖 Sending to ${providerName} for enhanced extraction...`);
             setProgress(88, 'AI verification...');
             try {

@@ -7,7 +7,7 @@ const InvoiceChat = (() => {
     const PROVIDERS = {
         groq: {
             url: 'https://api.groq.com/openai/v1/chat/completions',
-            model: 'llama-3.3-70b-versatile',
+            model: 'openai/gpt-oss-120b',
             name: 'Groq',
         },
         openrouter: {
@@ -103,7 +103,8 @@ RULES:
                 model: config.model,
                 messages,
                 temperature: 0.3,
-                max_tokens: 1024,
+                max_tokens: 4096,
+                ...(provider === 'groq' ? { reasoning_effort: 'low' } : {}),
             }),
         });
 
